@@ -2,6 +2,8 @@ import 'package:diary/core/theming/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../theming/text_styles.dart';
+
 class DefaultTextFormField extends StatelessWidget {
 
   final TextEditingController? controller;
@@ -27,26 +29,27 @@ class DefaultTextFormField extends StatelessWidget {
       controller: controller,
       onTap: onTap,
       onChanged: onChanged,
-      cursorColor: DefaultColors.mainBlueDark,
+      style: DefaultTextStyles.font20white400weight,
+      cursorColor: DefaultColors.mainBlueAccent,
       keyboardType: keyboardType ?? TextInputType.text,
       decoration: decoration ?? InputDecoration(
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(15),
               borderSide: BorderSide(
                   color: DefaultColors.grey,
                   width: 1
               )
           ),
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(15),
               borderSide: const BorderSide(
-                  color: DefaultColors.mainBlueDark,
+                  color: DefaultColors.mainBlueAccent,
                   width: 2
               )
           ),
           prefixIcon: icon,
           hintText: hintText?.tr??'',
-          hintStyle: TextStyle(color: DefaultColors.grey)
+          hintStyle: DefaultTextStyles.font18LighterShadeGrey400weight,
       ),
       validator: validator,
       minLines: minLines,
