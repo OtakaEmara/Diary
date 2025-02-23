@@ -13,7 +13,7 @@ class Home extends StatelessWidget {
         onPressed: () {
           context.pushNamed(RoutingConstant.writeNotes);
         },
-        child: Icon(Icons.add),
+        child: Icon(Icons.edit),
       ),
     );
   }
