@@ -11,7 +11,8 @@ class TitleFormating extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTextFormField(
       controller: titleController,
-      icon: Icon(Icons.title_outlined,color: DefaultColors.grey),
+      icon: Icon(Icons.title_outlined,color: DefaultColors.lighterShadeGrey),
+      maxLines: 1,
       hintText: 'title',
       validator: (p0) {
         if(titleController.text.isEmpty){

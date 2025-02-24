@@ -10,11 +10,12 @@ class DateFormating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    dateController.text = DateTime.now().toString();
     return DefaultTextFormField(
       controller: dateController,
       keyboardType: TextInputType.text,
-      hintText: DateFormat.yMMMd().format(DateTime.parse(DateTime.now().toString())),
-      icon: Icon(Icons.calendar_month_outlined,color: DefaultColors.grey),
+      hintText: DateFormat.yMMMd().format(DateTime.parse(dateController.text)),
+      icon: Icon(Icons.calendar_month_outlined,color: DefaultColors.lighterShadeGrey),
       onTap: () {
         showDatePicker(
           context: context,
