@@ -10,10 +10,11 @@ class TimeFormating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    timeController.text = TimeOfDay.now().format(context);
     return DefaultTextFormField(
       controller: timeController,
       icon: Icon(Icons.watch_later_outlined, color: DefaultColors.lighterShadeGrey),
-      hintText: TimeOfDay.now().format(context),
+      hintText: timeController.text,
       onTap: () {
         showTimePicker(
           context: context,
