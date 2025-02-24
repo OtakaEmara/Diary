@@ -14,7 +14,7 @@ class DateFormating extends StatelessWidget {
       controller: dateController,
       keyboardType: TextInputType.text,
       hintText: DateFormat.yMMMd().format(DateTime.parse(DateTime.now().toString())),
-      icon: Icon(Icons.calendar_month_outlined,color: DefaultColors.grey),
+      icon: Icon(Icons.calendar_month_outlined,color: DefaultColors.lighterShadeGrey),
       onTap: () {
         showDatePicker(
           context: context,

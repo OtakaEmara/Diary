@@ -29,14 +29,14 @@ class DefaultTextFormField extends StatelessWidget {
       controller: controller,
       onTap: onTap,
       onChanged: onChanged,
-      style: DefaultTextStyles.font20white400weight,
+      style: DefaultTextStyles.font18white400weight,
       cursorColor: DefaultColors.mainBlueAccent,
       keyboardType: keyboardType ?? TextInputType.text,
       decoration: decoration ?? InputDecoration(
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
               borderSide: BorderSide(
-                  color: DefaultColors.grey,
+                  color: DefaultColors.lighterShadeGrey,
                   width: 1
               )
           ),
@@ -47,9 +47,10 @@ class DefaultTextFormField extends StatelessWidget {
                   width: 2
               )
           ),
+          contentPadding: EdgeInsets.symmetric(horizontal: 13.0, vertical: 13.0),
           prefixIcon: icon,
           hintText: hintText?.tr??'',
-          hintStyle: DefaultTextStyles.font18LighterShadeGrey400weight,
+          hintStyle: DefaultTextStyles.font16LighterShadeGrey400weight,
       ),
       validator: validator,
       minLines: minLines,
