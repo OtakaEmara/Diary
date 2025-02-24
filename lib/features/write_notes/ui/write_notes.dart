@@ -20,7 +20,9 @@ class WriteNotes extends StatelessWidget {
         preferredSize: Size.fromHeight(50.h),
         child: Padding(
             padding: EdgeInsets.only(right: 15.w),
-          child: AppbarFormating(),
+          child: AppbarFormating(
+            formKey: formKey,
+          ),
         ),
       ),
       body: Padding(

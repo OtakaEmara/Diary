@@ -2,32 +2,32 @@ import 'package:diary/core/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/theming/colors.dart';
+import '../../logic/cubit/write_notes_cubit.dart';
 
 class TimeFormating extends StatelessWidget {
-  TimeFormating({super.key});
+  const TimeFormating({super.key});
 
-  final timeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    timeController.text = TimeOfDay.now().format(context);
+    var cubit = WriteNotesCubit.get(context);
     return DefaultTextFormField(
-      controller: timeController,
+      controller: cubit.timeController,
       icon: Icon(Icons.watch_later_outlined, color: DefaultColors.lighterShadeGrey),
-      hintText: timeController.text,
+      hintText: TimeOfDay.now().format(context),
       onTap: () {
         showTimePicker(
           context: context,
           initialTime: TimeOfDay.now(),
         ).then((onValue) {
           if (onValue != null && context.mounted) {
-            timeController.text = onValue.format(context);
+            cubit.timeController.text = onValue.format(context);
           }
         });
       },
       validator: (p0) {
-        if (timeController.text.isEmpty) {
-          return '';
+        if (cubit.timeController.text.isEmpty) {
+          cubit.timeController.text = TimeOfDay.now().format(context);
         }
         return null;
       },
