@@ -3,18 +3,18 @@ import 'package:diary/core/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class DateFormating extends StatelessWidget {
-  DateFormating({super.key});
+import '../../logic/cubit/write_notes_cubit.dart';
 
-  final dateController = TextEditingController();
+class DateFormating extends StatelessWidget {
+  const DateFormating({super.key});
 
   @override
   Widget build(BuildContext context) {
-    dateController.text = DateTime.now().toString();
+    var cubit = WriteNotesCubit.get(context);
     return DefaultTextFormField(
-      controller: dateController,
+      controller: cubit.dateController,
       keyboardType: TextInputType.text,
-      hintText: DateFormat.yMMMd().format(DateTime.parse(dateController.text)),
+      hintText: DateFormat.yMMMd().format(DateTime.now()),
       icon: Icon(Icons.calendar_month_outlined,color: DefaultColors.lighterShadeGrey),
       onTap: () {
         showDatePicker(
@@ -23,12 +23,12 @@ class DateFormating extends StatelessWidget {
           firstDate: DateTime.now(),
           lastDate: DateTime.parse("2050-12-31"),
         ).then((onValue){
-          dateController.text = DateFormat.yMMMd().format(DateTime.parse(onValue.toString()));
+          cubit.dateController.text = DateFormat.yMMMd().format(DateTime.parse(onValue.toString()));
         });
       },
       validator: (p0) {
-        if(dateController.text.isEmpty){
-          return '';
+        if(cubit.dateController.text.isEmpty){
+          cubit.dateController.text = DateFormat.yMMMd().format(DateTime.now());
         }
         return null;
       },

@@ -7,6 +7,7 @@ class DefaultColors{
   static const Color blue = Color(0xFF007AFF);
   static const Color darkGrey = Color(0xFF121212);
   static const Color white = Color(0xFFFFFFFF);
+  static const Color red = Color(0xFFF44336);
   static const Color lighterShadeGrey = Color(0xFFC4C4C4);
 
 }

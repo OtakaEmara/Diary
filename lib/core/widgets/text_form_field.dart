@@ -1,5 +1,6 @@
 import 'package:diary/core/theming/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../theming/text_styles.dart';
@@ -47,7 +48,21 @@ class DefaultTextFormField extends StatelessWidget {
                   width: 2
               )
           ),
-          contentPadding: EdgeInsets.symmetric(horizontal: 13.0, vertical: 13.0),
+          errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(
+                  color: DefaultColors.red,
+                  width: 2
+              )
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(
+                  color: DefaultColors.red,
+                  width: 2
+              )
+          ),
+          contentPadding: EdgeInsets.symmetric(horizontal: 13.0.w, vertical: 13.0.h),
           prefixIcon: icon,
           hintText: hintText?.tr??'',
           hintStyle: DefaultTextStyles.font16LighterShadeGrey400weight,
