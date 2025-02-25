@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/widgets/text_form_field.dart';
 import '../../logic/cubit/write_notes_cubit.dart';
 
-class BodyFormating extends StatelessWidget {
-  const BodyFormating({super.key});
+class WriteNotesBodyFormating extends StatelessWidget {
+  const WriteNotesBodyFormating({super.key});
 
   @override
   Widget build(BuildContext context) {

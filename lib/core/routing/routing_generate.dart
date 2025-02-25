@@ -1,5 +1,5 @@
 import 'package:diary/core/routing/routing_constant.dart';
-import 'package:diary/features/home/home.dart';
+import 'package:diary/features/home/ui/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

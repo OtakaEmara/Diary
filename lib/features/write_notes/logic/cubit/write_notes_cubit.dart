@@ -10,6 +10,7 @@ class WriteNotesCubit extends Cubit<WriteNotesStates> {
 
   static WriteNotesCubit get(context) => BlocProvider.of(context);
 
+  final formKey = GlobalKey<FormState>();
   var dateController = TextEditingController();
   var timeController = TextEditingController();
   var titleController = TextEditingController();
