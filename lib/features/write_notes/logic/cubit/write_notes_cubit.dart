@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../../../core/sqflite/sqflite_constants.dart';
+import '../../../home/logic/cubit/home_cubit.dart';
 
 class WriteNotesCubit extends Cubit<WriteNotesStates> {
   WriteNotesCubit() : super(WriteNotesInitialStates());
@@ -18,17 +19,17 @@ class WriteNotesCubit extends Cubit<WriteNotesStates> {
 
   void createNotes() {
     openDatabase(
-      'note.db',
+      'notes.db',
       version: 1,
       onCreate: (db, version) {
         db.execute(
-            'CREATE TABLE note (id INTEGER PRIMARY KEY, date TEXT,time TEXT, title TEXT, body TEXT, notify TEXT)');
+            'CREATE TABLE notes (id INTEGER PRIMARY KEY, date TEXT,time TEXT, title TEXT, body TEXT, notify TEXT)');
       },
       onOpen: (db) {
-
+        SqfLiteConstants.database = db;
+        HomeCubit().getData(SqfLiteConstants.database);
       },
     ).then((onValue) {
-      SqfLiteConstants.database = onValue;
       emit(CreateWriteNotesSuccessStates());
     }).catchError((onError) {
       emit(CreateWriteNotesErrorStates());
@@ -39,7 +40,8 @@ class WriteNotesCubit extends Cubit<WriteNotesStates> {
     required String date,required DateTime scheduledDate, required String time, required String title, required String body,required bool notify
   }) async{
     SqfLiteConstants.database?.transaction((txn) async{
-      txn.rawInsert('INSERT INTO note(date,time, title, body, notify) VALUES("$date","$time", "$title", "$body","$notify")').then((onValue){
+      txn.rawInsert('INSERT INTO notes(date,time, title, body, notify) VALUES("$date","$time", "$title", "$body","$notify")').then((onValue){
+        HomeCubit().getData(SqfLiteConstants.database);
         emit(InsertWriteNotesSuccessStates());
       }).catchError((onError){
         emit(InsertWriteNotesErrorStates());

@@ -5,7 +5,10 @@ import '../widgets/home_slidable_edit_formating.dart';
 import '../widgets/home_slidable_expansion_card_formating.dart';
 
 class HomeSlidAbleFormating extends StatelessWidget {
-  const HomeSlidAbleFormating({super.key});
+  HomeSlidAbleFormating({super.key, required this.getExpansionTileCardNotes, required this.index});
+
+  List getExpansionTileCardNotes;
+  int index;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class HomeSlidAbleFormating extends StatelessWidget {
           HomeSlidAbleEditFormating(),
         ],
       ),
-      child: HomeSlidAbleExpansionCardFormating(),
+      child: HomeSlidAbleExpansionCardFormating(getExpansionTileCardNotes: getExpansionTileCardNotes,index: index,),
     );
   }
 }

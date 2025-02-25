@@ -2,12 +2,15 @@ import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeSlidAbleExpansionCardFormating extends StatelessWidget {
-  const HomeSlidAbleExpansionCardFormating({super.key});
+  HomeSlidAbleExpansionCardFormating({super.key, required this.getExpansionTileCardNotes, required this.index});
+
+  List getExpansionTileCardNotes;
+  int index;
 
   @override
   Widget build(BuildContext context) {
     return ExpansionTileCard(
-      title: Text('',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+      title: Text(getExpansionTileCardNotes[index]['title'],style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
       initiallyExpanded: true,
       children: [
         Padding(
@@ -17,15 +20,15 @@ class HomeSlidAbleExpansionCardFormating extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("",style: TextStyle(fontSize: 20)),
+                  Text(getExpansionTileCardNotes[index]['body'],style: TextStyle(fontSize: 20)),
                   SizedBox(height: 10,),
                   Row(
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('',style: TextStyle(fontSize: 14,color: Colors.grey)),
-                          Text('',style: TextStyle(fontSize: 13,color: Colors.grey)),
+                          Text(getExpansionTileCardNotes[index]['date'],style: TextStyle(fontSize: 14,color: Colors.grey)),
+                          Text(getExpansionTileCardNotes[index]['time'],style: TextStyle(fontSize: 13,color: Colors.grey)),
                         ],
                       ),
                     ],
