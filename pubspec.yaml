@@ -39,6 +39,7 @@ dependencies:
   flutter_local_notifications: ^18.0.1
   timezone: ^0.9.4
   expansion_tile_card: ^3.0.0
+  flutter_slidable: ^4.0.0
   conditional_builder_null_safety: ^0.0.6
   # State management
   flutter_bloc: ^8.1.3

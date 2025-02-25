@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/theming/colors.dart';
 import '../../logic/cubit/write_notes_cubit.dart';
 
-class TitleFormating extends StatelessWidget {
-  const TitleFormating({super.key});
+class WriteNotesTitleFormating extends StatelessWidget {
+  const WriteNotesTitleFormating({super.key});
 
 
   @override

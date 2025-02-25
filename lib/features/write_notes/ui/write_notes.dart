@@ -1,43 +1,44 @@
-import 'package:diary/features/write_notes/ui/widgets/appbar_formating.dart';
-import 'package:diary/features/write_notes/ui/widgets/body_formating.dart';
-import 'package:diary/features/write_notes/ui/widgets/date_formating.dart';
-import 'package:diary/features/write_notes/ui/widgets/time_formating.dart';
-import 'package:diary/features/write_notes/ui/widgets/title_formating.dart';
+
+import 'package:diary/features/write_notes/ui/widgets/appbar/ui/write_notes_appbar_formating.dart';
+import 'package:diary/features/write_notes/ui/widgets/write_notes_body_formating.dart';
+import 'package:diary/features/write_notes/ui/widgets/write_notes_date_formating.dart';
+import 'package:diary/features/write_notes/ui/widgets/write_notes_time_formating.dart';
+import 'package:diary/features/write_notes/ui/widgets/write_notes_title_formating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/helpers/spacing.dart';
+import '../logic/cubit/write_notes_cubit.dart';
 
 class WriteNotes extends StatelessWidget {
-  WriteNotes({super.key});
-
-  final formKey = GlobalKey<FormState>();
+  const WriteNotes({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    var cubit = WriteNotesCubit.get(context);
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.h),
         child: Padding(
-            padding: EdgeInsets.only(right: 15.w),
-          child: AppbarFormating(
-            formKey: formKey,
-          ),
+          padding: EdgeInsets.only(right: 15.w),
+          child: WriteNotesAppbarFormating(),
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Form(
-          key: formKey,
+          key: cubit.formKey,
           child: Column(
             children: [
-              DateFormating(),
+              WriteNotesDateFormating(),
               verticalSpacing(15),
-              TimeFormating(),
+              WriteNotesTimeFormating(),
               verticalSpacing(15),
-              TitleFormating(),
+              WriteNotesTitleFormating(),
               verticalSpacing(20),
-              BodyFormating(),
+              WriteNotesBodyFormating(),
             ],
           ),
         ),

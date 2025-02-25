@@ -5,8 +5,8 @@ import 'package:intl/intl.dart';
 
 import '../../logic/cubit/write_notes_cubit.dart';
 
-class DateFormating extends StatelessWidget {
-  const DateFormating({super.key});
+class WriteNotesDateFormating extends StatelessWidget {
+  const WriteNotesDateFormating({super.key});
 
   @override
   Widget build(BuildContext context) {

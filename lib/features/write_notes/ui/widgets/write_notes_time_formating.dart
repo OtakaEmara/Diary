@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/theming/colors.dart';
 import '../../logic/cubit/write_notes_cubit.dart';
 
-class TimeFormating extends StatelessWidget {
-  const TimeFormating({super.key});
+class WriteNotesTimeFormating extends StatelessWidget {
+  const WriteNotesTimeFormating({super.key});
 
 
   @override
