@@ -4,8 +4,9 @@ import 'colors.dart';
 
 ThemeData darkTheme = ThemeData.dark().copyWith(
     appBarTheme: AppBarTheme(
-        color: DefaultColors.darkGrey,
         elevation: 0,
+        backgroundColor: DefaultColors.darkGrey,
+        surfaceTintColor: DefaultColors.darkGrey,
     ),
     scaffoldBackgroundColor: DefaultColors.darkGrey,
     floatingActionButtonTheme: FloatingActionButtonThemeData(

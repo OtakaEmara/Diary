@@ -17,7 +17,7 @@ class WriteNotesCubit extends Cubit<WriteNotesStates> {
   var titleController = TextEditingController();
   var bodyController = TextEditingController();
 
-  void createNotes() {
+  void createNotes(context) {
     openDatabase(
       'notes.db',
       version: 1,
@@ -26,8 +26,9 @@ class WriteNotesCubit extends Cubit<WriteNotesStates> {
             'CREATE TABLE notes (id INTEGER PRIMARY KEY, date TEXT,time TEXT, title TEXT, body TEXT, notify TEXT)');
       },
       onOpen: (db) {
+        print('database opened');
         SqfLiteConstants.database = db;
-        HomeCubit().getData(SqfLiteConstants.database);
+        HomeCubit.get(context).getExpansionTileCardNotesData(db);
       },
     ).then((onValue) {
       emit(CreateWriteNotesSuccessStates());
@@ -36,12 +37,12 @@ class WriteNotesCubit extends Cubit<WriteNotesStates> {
     });
   }
 
-  Future insertData({
+  Future insertData(context,{
     required String date,required DateTime scheduledDate, required String time, required String title, required String body,required bool notify
   }) async{
-    SqfLiteConstants.database?.transaction((txn) async{
-      txn.rawInsert('INSERT INTO notes(date,time, title, body, notify) VALUES("$date","$time", "$title", "$body","$notify")').then((onValue){
-        HomeCubit().getData(SqfLiteConstants.database);
+    await SqfLiteConstants.database?.transaction((txn) async{
+      await txn.rawInsert('INSERT INTO notes(date,time, title, body, notify) VALUES("$date","$time", "$title", "$body","$notify")').then((onValue){
+        HomeCubit.get(context).getExpansionTileCardNotesData(SqfLiteConstants.database);
         emit(InsertWriteNotesSuccessStates());
       }).catchError((onError){
         emit(InsertWriteNotesErrorStates());

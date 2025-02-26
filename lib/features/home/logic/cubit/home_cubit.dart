@@ -8,16 +8,29 @@ class HomeCubit extends Cubit<HomeStates> {
 
   static HomeCubit get(context) => BlocProvider.of(context);
 
-  List getNotes = [];
+  List getExpansionTileCardNotesNotes = [];
 
-  void getData(Database? database) {
-    getNotes = [];
-    emit(HomeGetDataLoadingStates());
+  //get expansion tile card notes data
+  Future getExpansionTileCardNotesData(Database? database) async{
+    getExpansionTileCardNotesNotes = [];
+    emit(HomeGetExpansionTileCardNotesDataLoadingStates());
     database!.rawQuery('SELECT * FROM notes').then((value) {
-      getNotes = value;
-      emit(HomeGetDataSuccessStates());
+      getExpansionTileCardNotesNotes = value;
+      emit(HomeGetExpansionTileCardNotesDataSuccessStates());
     }).catchError((error) {
-      emit(HomeGetDataErrorStates());
+      emit(HomeGetExpansionTileCardNotesDataErrorStates());
     });
   }
+
+  //delete notes data
+  Future deleteNotesData({required int id, required Database? database}) async{
+    emit(HomeDeleteNotesDataLoadingStates());
+    database!.rawDelete('DELETE FROM notes WHERE id = ?', [id]).then((value) {
+      getExpansionTileCardNotesData(database);
+      emit(HomeDeleteNotesDataSuccessStates());
+    }).catchError((error) {
+      emit(HomeDeleteNotesDataErrorStates());
+    });
+  }
+
 }
